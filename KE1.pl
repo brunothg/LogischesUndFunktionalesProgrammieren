@@ -22,6 +22,12 @@ ue_length([], 0).
 ue_length([H|T], [Out]) :- ue_length(T, Out).
 
 % 4
-
+reverse_deep(List, Result) :- reverse_deep(List, [], Result).
+reverse_deep([], Acc, Acc).
+reverse_deep([LH|LT], Acc, Result) :- reverse_deep(LT, [LH|Acc], Result), \+(is_list(LH)).
+reverse_deep([LH|LT], Acc, Result) :- reverse_deep(LH, [], ResultHead), reverse_deep(LT, [ResultHead|Acc], Result).
 
 % 5
+as_find_key([S,D], S, D).
+as_find([LH|LT], S, D) :- as_find_key(LH, S, D).
+as_find([LH|LT], S, D) :- as_find(LT, S, D).
