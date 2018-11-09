@@ -74,3 +74,27 @@ ablsqr
 (nstf 2)
 (nstf -2)
 |#
+
+
+
+;; Aufgabe 3.1
+(define (as-find schluessel liste)
+
+  (if (null? liste)
+      '()
+      (let ((ele (car liste)) (rest (cdr liste)))
+        (let ((elekey (car ele)) (elevalue (car(cdr ele))))
+          (if (equal? elekey schluessel)
+              (cons elevalue (as-find schluessel rest))
+              (as-find schluessel rest)
+              )
+          )
+        )
+  )
+)
+
+#|
+(as-find 'b '((a 1) (b 7) (c 4) (a 6) (c 5) (d 4) (b 2)))
+(as-find 'a '((a 1) (b 7) (c 4) (a 6) (c 5) (d 4) (b 2)))
+(as-find 'e '((a 1) (b 7) (c 4) (a 6) (c 5) (d 4) (b 2)))
+|#
