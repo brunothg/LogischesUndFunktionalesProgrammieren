@@ -44,3 +44,33 @@ ablsqr
 (ablsqr 2)
 (ablsqr 3)
 |#
+
+
+
+
+;; Aufgabe 2.2
+(define (abs x) (if (< x 0) (* -1 x) x))
+
+(define (make-nstf f)
+  (define fabl (ableiten f 1e-06))
+
+  (define (schritt x)
+    (define xnpe (- x (/ (f x) (fabl x))))
+    
+    (if (< (abs (- (f x) (f xnpe))) 0.0001)
+        xnpe
+        (schritt xnpe)
+    )
+  )
+  
+  (lambda(x)
+    (schritt x)
+  )
+)
+
+#|
+(define (myfunc x) (- (* 3 x x) 2))
+(define nstf (make-nstf myfunc))
+(nstf 2)
+(nstf -2)
+|#
