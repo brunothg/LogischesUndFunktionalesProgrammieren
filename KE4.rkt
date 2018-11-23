@@ -15,14 +15,12 @@
 (define (fib-stream)
   (define a 0)
   (define b 1)
-  (define c 1)
   
   (define (fib n)
     (cond
       ((= 0 n) (cons-stream (cons n (cons a '())) (fib (+ n 1)))) ;; Erster Schritt
       ((= 1 n) (cons-stream (cons n (cons b '())) (fib (+ n 1)))) ;; Zweiter Schritt
-      (else (begin
-              (set! c (+ a b))
+      (else (let ((c (+ a b)))
               (set! a b)
               (set! b c)
               (cons-stream (cons n (cons c '())) (fib (+ n 1)))
