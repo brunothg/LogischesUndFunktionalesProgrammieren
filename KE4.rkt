@@ -89,9 +89,36 @@ a
 
 
 
+#|
 (define b (has-even-fib))
 b
 (tail b)
 (tail (tail b))
 (tail (tail (tail b)))
 (tail (tail (tail (tail b))))
+|#
+
+
+;; Aufgabe 2
+
+(define (ggT a b)
+  (cond
+    ((= a b) a) ;; a, falls a=b
+    ((= a 0) b) ;; b, falls a=0
+    ((= b 0) a) ;; a, falls b=0
+    ((< a b) (ggT a (- b a))) ;; ggT(a,b-a), falls a<b
+    (else (ggT b (- a b))) ;; ggT(b,a-b), falls b<a !else
+  )
+)
+
+
+(define (brueche)
+  0
+)
+
+
+(define b (brueche))
+b
+(tail b)
+(tail (tail b))
+(tail (tail (tail b)))
