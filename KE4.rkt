@@ -227,7 +227,7 @@ b
 )
 
 
-
+#|
 (define cd1 (make-cd-control))
 (cd1 'einlegen 4)
 (cd1 'vor 'dummy)
@@ -240,3 +240,4 @@ b
 (cd1 'einlegen 10)
 (cd1 'auswerfen 'dummy)
 (cd1 'test 'dummy)
+|#
