@@ -113,7 +113,31 @@ b
 
 
 (define (brueche)
-  0
+  (define m 1)
+  (define n 2)
+
+  (define (next-bruch)
+    (let ((tM m)(tN n))
+      (set! m (+ m 1))
+      (if (= m n)
+          (begin
+            (set! m 1)
+            (set! n (+ n 1))
+          )
+      )
+
+      (cons-stream (cons tM tN) (next-bruch))
+    )
+  )
+
+  (define (filterfunc x)
+    (if (= (ggT (car x) (cdr x)) 1)
+        #t
+        #f
+    )
+  )
+
+  (filter filterfunc (next-bruch))
 )
 
 
@@ -122,3 +146,5 @@ b
 (tail b)
 (tail (tail b))
 (tail (tail (tail b)))
+(tail (tail (tail (tail b))))
+(tail (tail (tail (tail (tail b)))))
