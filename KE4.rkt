@@ -33,6 +33,7 @@
 )
 
 
+#|
 (define a (fib-stream))
 a
 (tail a)
@@ -40,3 +41,57 @@ a
 (tail (tail (tail a)))
 (tail (tail (tail (tail a))))
 (tail (tail (tail (tail (tail a)))))
+|#
+
+
+;; Aufgabe 1.2
+#|
+(define (right-reduce combine initial s)
+  (if (empty-stream? s)
+      initial
+      (combine (head s)
+                (right-reduce combine initial (tail s)))))
+
+(define (singleton-stream e) (cons-stream e the-empty-stream))
+
+(define (append-streams s1 s2)
+  (if (empty-stream? s1)
+      s2
+      (cons-stream (head s1) (append-streams (tail s1) s2))))
+|#
+
+(define (map f s)
+  (if (empty-stream? s)
+      the-empty-stream
+      (cons-stream (f (head s)) (map f(tail s)))))
+
+(define (filter p s)
+  (if (empty-stream? s)
+      the-empty-stream
+      (let((x (head s)))
+        (if (p x)
+            (cons-stream x (filter p (tail s)))
+            (filter p (tail s))))))
+
+
+
+(define (has-even-fib)
+  (define (even-fib? x)
+    (even? (cadr x))
+  )
+
+  (define (getn x)
+    (car x)
+  )
+  
+  (map getn (filter even-fib? (fib-stream)))
+)
+
+
+
+(define b (has-even-fib))
+b
+(tail b)
+(tail (tail b))
+(tail (tail (tail b)))
+(tail (tail (tail (tail b))))
