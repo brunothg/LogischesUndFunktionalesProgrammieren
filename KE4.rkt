@@ -141,6 +141,7 @@ b
 )
 
 
+#|
 (define b (brueche))
 b
 (tail b)
@@ -148,3 +149,94 @@ b
 (tail (tail (tail b)))
 (tail (tail (tail (tail b))))
 (tail (tail (tail (tail (tail b)))))
+|#
+
+
+
+;; Aufgabe 3
+
+(define (make-cd-control)
+  (define cd-status 'leer) ;; leer oder cd
+  (define titelzahl 0) ;; Anzahl der verfügbaren Titel der aktuellen CD oder 0
+  (define titel 0) ;; Der aktuell selektierte Titel oder 0
+  (define abspielstatus 'undefiniert) ;; abspielen, stop oder undefiniert
+
+  (define (dispatch msg arg)
+    (cond
+      ((eq? msg 'einlegen)
+       (if (eq? cd-status 'cd)
+           'cd-fach-belegt
+           (begin
+             (set! cd-status 'cd)
+             (set! titel 1)
+             (set! abspielstatus 'stop)
+             (set! titelzahl arg)
+           )
+       )
+      )
+      ((eq? msg 'auswerfen)
+       (if (eq? cd-status 'leer)
+           'ignore
+           (begin
+             (set! cd-status 'leer)
+             (set! titel 0)
+             (set! abspielstatus 'undefiniert)
+             (set! titelzahl 0)
+           )
+       )
+      )
+      ((eq? msg 'abspielen)
+       (if (eq? cd-status 'leer)
+           'ignore
+           (begin
+             (set! abspielstatus 'abspielen)
+           )
+       )
+      )
+      ((eq? msg 'stop)
+       (if (eq? cd-status 'leer)
+           'ignore
+           (begin
+             (set! abspielstatus 'stop)
+             (set! titel 1)
+           )
+       )
+      )
+      ((eq? msg 'vor)
+       (if (or (eq? cd-status 'leer) (= titel titelzahl))
+           'ignore
+           (begin
+             (set! titel (+ titel 1))
+           )
+       )
+      )
+      ((eq? msg 'zurueck)
+       (if (or (eq? cd-status 'leer) (= titel 1))
+           'ignore
+           (begin
+             (set! titel (1 titel 1))
+           )
+       )
+      )
+      ((eq? msg 'test) (list cd-status abspielstatus titelzahl titel))
+      (else 'ignore)
+    )
+  )
+  
+  dispatch
+)
+
+
+
+(define cd1 (make-cd-control))
+(cd1 'einlegen 4)
+(cd1 'vor 'dummy)
+(cd1 'vor 'dummy)
+(cd1 'abspielen 'dummy)
+(cd1 'vor 'dummy)
+(cd1 'vor 'dummy)
+(cd1 'vor 'dummy)
+(cd1 'test 'dummy)
+(cd1 'einlegen 10)
+(cd1 'auswerfen 'dummy)
+(cd1 'test 'dummy)
