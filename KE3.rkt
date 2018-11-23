@@ -59,7 +59,7 @@ ablsqr
   (define (schritt x)
     (define xnpe (- x (/ (f x) (fabl x))))
     
-    (if (< (abs (- (f x) (f xnpe))) 0.0001)
+    (if (< (abs (-  x  xnpe)) 0.0001) 
         xnpe
         (schritt xnpe)
     )
@@ -70,12 +70,15 @@ ablsqr
   )
 )
 
-#|
+
 (define (myfunc x) (- (* 3 x x) 2))
 (define nstf (make-nstf myfunc))
 (nstf 2)
 (nstf -2)
-|#
+
+(define (myfunc2 x) (* x x))
+(define nstf2 (make-nstf myfunc2))
+(nstf2 -1)
 
 
 
