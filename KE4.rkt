@@ -214,7 +214,7 @@ b
        (if (or (eq? cd-status 'leer) (= titel 1))
            'ignore
            (begin
-             (set! titel (1 titel 1))
+             (set! titel (- titel 1))
            )
        )
       )
@@ -240,4 +240,16 @@ b
 (cd1 'einlegen 10)
 (cd1 'auswerfen 'dummy)
 (cd1 'test 'dummy)
+|#
+
+#|
+(define cd2 (make-cd-control))
+(cd2 'einlegen 4)
+(cd2 'vor 'dummy)
+(cd2 'vor 'dummy)
+(cd2 'vor 'dummy)
+(cd2 'vor 'dummy)
+(cd2 'abspielen 'dummy)
+(cd2 'zurueck 'dummy)
+(cd2 'test 'dummy)
 |#
