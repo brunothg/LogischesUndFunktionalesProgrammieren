@@ -30,6 +30,9 @@ biersekt_labeling([Head|Tail]) :-
 	indomain(Head)
 	, biersekt_labeling(Tail).
 	
+% Die Constrains sind der Aufgabenstellung nach vollständig (z.B. notwendig, wenn mehrere Lösungen möglich wären).
+% Damit die einzige Lösung gefunden wird, sind allerdings deutlich weniger Constrints notwendig.
+% Ausreichen würden z.B. "Unterschiedliche Ziffern" und "Rechnung"
 biersekt_constrains([B,I,E,R,S,K,T,A,U,F]) :-
 	
 	% Unterschiedliche Ziffern
