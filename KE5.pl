@@ -12,34 +12,28 @@ fib(N,F) :- N #> 1,
 
 
 % 2
-% Entferne Element aus Liste
-takeout(Element, [Element|Tail], Tail).  
-takeout(Element, [Head|TailV], [Head|TailR]) :- takeout(Element, TailV, TailR).
+biersekt(Loesung) :- 
+	% Shortcut
+	Loesung = [B,I,E,R,S,K,T,A,U,F]
 
-% Berechne Permutation mit gegebener Symbolliste
-perm([HeadV|TailV], Permutation) :- perm(TailV, Partial), takeout(HeadV, Permutation, Partial).  
-perm([],[]).
+	% Domain
+	,domain(Loesung, 0, 9)
 
-% Permutation für Aufgabenbezogene Symbole
-gen_perm(Permutation) :- perm([0,1,2,3,4,5,6,7,8,9], Permutation).
-
-
-biersekt(X) :- 
 	% Bedingungen
-	biersekt_constrains(X)	
+	,biersekt_constrains(Loesung)	
 	
 	% Werte generieren
-	, biersekt_labeling(X).
+	, biersekt_labeling(Loesung).
 	
-biersekt_labeling(X) :-
-	gen_perm(X).
+biersekt_labeling([]).
+biersekt_labeling([Head|Tail]) :-
+	indomain(Head)
+	, biersekt_labeling(Tail).
 	
 biersekt_constrains([B,I,E,R,S,K,T,A,U,F]) :-
-	% Domain abstecken
-	domain([B,I,E,R,S,K,T,A,U,F], 0, 9)
 	
 	% Unterschiedliche Ziffern
-	, B#\=I, B#\=E, B#\=R, B#\=S, B#\=K, B#\=T, B#\=A, B#\=U, B#\=F
+	  B#\=I, B#\=E, B#\=R, B#\=S, B#\=K, B#\=T, B#\=A, B#\=U, B#\=F
 	, I#\=E, I#\=R, I#\=S, I#\=K, I#\=T, I#\=A, I#\=U, I#\=F
 	, E#\=R, E#\=S, E#\=K, E#\=T, E#\=A, E#\=U, E#\=F
 	, R#\=S, R#\=K, R#\=T, R#\=A, R#\=U, R#\=F
