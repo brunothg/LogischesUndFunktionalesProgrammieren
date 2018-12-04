@@ -29,7 +29,10 @@ biersekt(X) :-
 	biersekt_constrains(X)	
 	
 	% Werte generieren
-	, gen_perm(X).
+	, biersekt_labeling(X).
+	
+biersekt_labeling(X) :-
+	gen_perm(X).
 	
 biersekt_constrains([B,I,E,R,S,K,T,A,U,F]) :-
 	% Domain abstecken
