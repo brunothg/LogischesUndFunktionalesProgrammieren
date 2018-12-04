@@ -23,12 +23,8 @@ biersekt(Loesung) :-
 	,biersekt_constrains(Loesung)	
 	
 	% Werte generieren
-	, biersekt_labeling(Loesung).
+	, labeling([ff], Loesung).
 	
-biersekt_labeling([]).
-biersekt_labeling([Head|Tail]) :-
-	indomain(Head)
-	, biersekt_labeling(Tail).
 	
 % Die Constrains sind der Aufgabenstellung nach vollständig (z.B. notwendig, wenn mehrere Lösungen möglich wären).
 % Damit die einzige Lösung gefunden wird, sind allerdings deutlich weniger Constrints notwendig.
