@@ -10,8 +10,24 @@
 ;(abs -123)
 
 ;; atom? - Testet, ob das ihr übergebene Argument ein Atom ist (mit cond)
+(define (atom? x) (
+     cond
+      ((boolean? x) #t)
+      ((number? x) #t)
+      ((string? x) #t)
+      ((symbol? x) #t)
+      (else #f)
+))
+;(atom? 1) (atom? atom?) (atom? "abc") (atom? 'abc)
 
 ;; atom? - Variation mit OR
+(define (atom? x) (
+     if
+      (or (boolean? x) (number? x) (string? x) (symbol? x))
+      #t
+      #f
+))
+;(atom? 1) (atom? atom?) (atom? "abc") (atom? 'abc)
 
 ;; ith - Liefert das i-te Element einer Liste zurück
 
