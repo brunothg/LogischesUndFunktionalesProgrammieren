@@ -2,6 +2,8 @@
 ;; Übungsaufgaben aus den Kurseinheiten und den Klausurprotokollen
 
 ;; average - Berechnung des Durchschnitts zweier Zahlen
+(define (average x y) (* (+ x y) 0.5))
+;(average 3 7)
 
 ;; abs - Berechnung des Absolutbetrags einer Zahl
 
