@@ -32,6 +32,16 @@
 ;; ith - Liefert das i-te Element einer Liste zurück
 
 ;; length - Berechnet die Länge einer Liste
+(define (length liste) 
+    (define (length liste counter)(
+            if (null? liste)
+               counter
+               (length (cdr liste) (+ counter 1))
+     ))
+
+    (length liste 0)
+)
+;(length '(1 2 3 4)) (length (list 1 2 3 4 5))
 
 ;; append - Listenkonkatenation
 
