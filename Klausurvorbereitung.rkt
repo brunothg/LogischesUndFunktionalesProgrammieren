@@ -40,6 +40,8 @@
 ;; sum-with - Eine Funktion (Summe von bis), die eine andere Funktion zurückgibt
 
 ;; dreimal - Gibt eine Funktion zurück, die die übergebene Funktion dreimal anwendet.
+(define (dreimal f) (lambda (x) (f(f(f x)))))
+;(define (p1 x) (+ x 1)) (let ((f (dreimal p1))) (f 5))
 
 ;; compose - ein Programm, dass die Komposition zweier Funktionen darstellt
 
@@ -49,7 +51,11 @@
 
 ;; insert - Fügt ein Element sortiert in eine Liste ein
 
-;; gerade? - Prüft, ob ein Element in einer Liste enthalten ist
+;; gerade? - Prüft, ob eine Zahl gerade ist
+(define (gerade? x) (= (modulo x 2) 0))
+;(gerade? 5) (gerade? 6)
+
+;; member - Prüft, ob ein Element in einer Liste enthalten ist
 
 ;; last - Überprüft, ob ein Element das letzte Element einer Liste ist
 
