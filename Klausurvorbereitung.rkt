@@ -46,6 +46,14 @@
 ;; compose - ein Programm, dass die Komposition zweier Funktionen darstellt
 
 ;; n-mal - eine Funktion, die eine Funktion n-mal ausführt
+(define (n-mal n f) (
+     if (> n 0)
+        (begin
+          (f)
+          (n-mal (- n 1) f)
+          )
+))
+;;(n-mal 3 (lambda () (begin (display 1) (newline))))
 
 ;; filter - eine Funktion, die eine Liste und ein Prädikat als Eingabe erwartet und eine Liste der Elemente aus der Eingabeliste zurückgibt, die das Prädikat erfüllen
 
