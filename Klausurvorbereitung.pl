@@ -13,10 +13,18 @@ ue_is_list([]).
 ue_is_list([_|R]) :- ue_is_list(R).
 
 % reverse/2 - Invertiere eine gegebene Liste
+ue_reverse(L, Rev) :- ue_reverse_akk(L, [], Rev).
+ue_reverse_akk([], Akk, Akk) :- !, true.
+ue_reverse_akk([E|R], Akk, Rev) :- ue_reverse_akk(R, [E|Akk], Rev).
 
 % sortiert/1 - Prüfe, ob eine Liste sortiert ist
+sortiert([]).
+sortiert([_]).
+sortiert([A,B|R]) :- A =< B, sortiert([B|R]).
 
 % append/3 - Verbinde erste beiden Listen zu dritter
+ue_append([], Res, Res) :- !, true.
+ue_append([L1H|L1R], L2, [L1H|E]) :- ue_append(L1R, L2, E).
 
 % member/2 - Variation mit append/3
 
