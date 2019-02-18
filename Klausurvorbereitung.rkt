@@ -6,6 +6,8 @@
 ;(average 3 7)
 
 ;; abs - Berechnung des Absolutbetrags einer Zahl
+(define (abs x) (if (< x 0) (* x -1) x))
+;(abs -123)
 
 ;; atom? - Testet, ob das ihr übergebene Argument ein Atom ist (mit cond)
 
