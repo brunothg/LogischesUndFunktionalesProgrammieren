@@ -1,5 +1,4 @@
 (load "k1816-extensions.scm")
-:- use_module(library(clpfd)).
 ;; Übungsaufgaben aus den Kurseinheiten und den Klausurprotokollen
 
 ;; average - Berechnung des Durchschnitts zweier Zahlen

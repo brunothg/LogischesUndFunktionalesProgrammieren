@@ -1,3 +1,4 @@
+:- use_module(library(clpfd)).
 % Übungsaufgaben aus den Kurseinheiten und den Klausurprotokollen
 
 % member/2 - Prüfe, ob ein Element in einer Liste enthalten ist
