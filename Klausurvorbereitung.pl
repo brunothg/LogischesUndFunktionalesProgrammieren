@@ -23,12 +23,14 @@ sortiert([_]).
 sortiert([A,B|R]) :- A =< B, sortiert([B|R]).
 
 % append/3 - Verbinde erste beiden Listen zu dritter
-ue_append([], Res, Res) :- !, true.
+ue_append([], Res, Res).
 ue_append([L1H|L1R], L2, [L1H|E]) :- ue_append(L1R, L2, E).
 
 % member/2 - Variation mit append/3
+ue_member2(L, E) :- ue_append(_, [E|_], L).
 
 % last/2 - Variation mit append/3
+ue_last2(L, E) :- ue_append(_, [E], L).
 
 % ith/3 - Prüft, ob das erste Argument an der Stelle von N in der Liste L steht
 ue_ith(E, 1, [E|_]).
