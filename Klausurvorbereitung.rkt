@@ -30,6 +30,13 @@
 ;(atom? 1) (atom? atom?) (atom? "abc") (atom? 'abc)
 
 ;; ith - Liefert das i-te Element einer Liste zurück
+(define (ith liste n)
+  (if (> n 0)
+      (ith (cdr liste) (- n 1))
+      (car liste)
+   )
+)
+(ith '(a b c d e f g) 4)
 
 ;; length - Berechnet die Länge einer Liste
 (define (length liste) 
