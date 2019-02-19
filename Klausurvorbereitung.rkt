@@ -77,6 +77,20 @@
 ;(product '(3 4 5))
 
 ;; sum-with - Eine Funktion (Summe von bis), die eine andere Funktion zurückgibt
+(define (sum-with func)
+
+  (define (sum-with von bis func counter)
+
+    (if (> von bis)
+        counter
+        (sum-with (+ von 1) bis func (+ counter (func von)))
+     )
+    
+    )
+  
+  (lambda (von bis) (sum-with von bis func 0))
+  )
+;(define sumsquare (sum-with (lambda (n) (* n n)))) (sumsquare 3 5)
 
 ;; dreimal - Gibt eine Funktion zurück, die die übergebene Funktion dreimal anwendet.
 (define (dreimal f) (lambda (x) (f(f(f x)))))
