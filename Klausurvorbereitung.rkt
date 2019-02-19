@@ -63,6 +63,18 @@
 ;(append '(a b c d) '(e f g h))
 
 ;; produkt - Gib das Produkt einer Liste von Zahlen zurück
+(define (product liste)
+
+  (define (product liste counter)
+    (if (null? liste)
+        counter
+        (product (cdr liste) (* counter (car liste)))
+     )
+    )
+
+  (product liste 1)
+  )
+;(product '(3 4 5))
 
 ;; sum-with - Eine Funktion (Summe von bis), die eine andere Funktion zurückgibt
 
@@ -80,7 +92,7 @@
           (n-mal (- n 1) f)
           )
 ))
-;;(n-mal 3 (lambda () (begin (display 1) (newline))))
+;(n-mal 3 (lambda () (begin (display 1) (newline))))
 
 ;; filter - eine Funktion, die eine Liste und ein Prädikat als Eingabe erwartet und eine Liste der Elemente aus der Eingabeliste zurückgibt, die das Prädikat erfüllen
 
