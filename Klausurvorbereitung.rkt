@@ -109,6 +109,22 @@
 ;; filter - eine Funktion, die eine Liste und ein Prädikat als Eingabe erwartet und eine Liste der Elemente aus der Eingabeliste zurückgibt, die das Prädikat erfüllen
 
 ;; insert - Fügt ein Element sortiert in eine Liste ein
+(define (insert liste ele)
+
+  (if (null? liste)
+      (cons ele '())
+      (begin
+
+        (if (<= ele (car liste))
+            (cons ele liste)
+            (cons (car liste) (insert (cdr liste) ele))
+         )
+        
+        )
+      )
+  
+  )
+;(insert '(1 2 3 5 6) 4)
 
 ;; gerade? - Prüft, ob eine Zahl gerade ist
 (define (gerade? x) (= (modulo x 2) 0))
