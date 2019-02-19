@@ -96,8 +96,6 @@
 (define (dreimal f) (lambda (x) (f(f(f x)))))
 ;(define (p1 x) (+ x 1)) (let ((f (dreimal p1))) (f 5))
 
-;; compose - ein Programm, dass die Komposition zweier Funktionen darstellt
-
 ;; n-mal - eine Funktion, die eine Funktion n-mal ausführt
 (define (n-mal n f) (
      if (> n 0)
@@ -117,6 +115,16 @@
 ;(gerade? 5) (gerade? 6)
 
 ;; member - Prüft, ob ein Element in einer Liste enthalten ist
+(define (member liste ele)
+
+  (cond
+    ((null? liste) #f)
+    ((eq? ele (car liste)) #t)
+    (else (member (cdr liste) ele))
+    )
+  
+  )
+;(member '(a b c d e f) 'c) (member '(a b d e f) 'c)
 
 ;; last - Überprüft, ob ein Element das letzte Element einer Liste ist
 
