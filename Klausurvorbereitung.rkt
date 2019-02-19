@@ -164,6 +164,15 @@
   )
 ;(last '(a b c) 'c) (last '(a b c d e f) 'c)
 
-;; right reduce Funktion für Listenkonkatenation
+;; Definition der Stream-Funktionen.
 
-;; sum-stream - Berechnet die Summe aller Elemente eines Stroms von Zahlen
+(define the-empty-stream '())
+
+(define-syntax cons-stream
+  (syntax-rules ()
+    ((cons-stream x y)
+     (cons x (delay y)))))
+
+(define head car)
+(define (tail s) (force (cdr s)))
+(define empty-stream? null?) 
