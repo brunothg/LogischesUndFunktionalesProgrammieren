@@ -36,7 +36,7 @@
       (car liste)
    )
 )
-(ith '(a b c d e f g) 4)
+;(ith '(a b c d e f g) 4)
 
 ;; length - Berechnet die Länge einer Liste
 (define (length liste) 
@@ -51,6 +51,16 @@
 ;(length '(1 2 3 4)) (length (list 1 2 3 4 5))
 
 ;; append - Listenkonkatenation
+(define (append liste1 liste2)
+
+  (cond
+    ((null? liste1) liste2)
+    ((null? liste2) liste1)
+    (else (cons (car liste1) (append (cdr liste1) liste2)))
+    )
+  
+  )
+;(append '(a b c d) '(e f g h))
 
 ;; produkt - Gib das Produkt einer Liste von Zahlen zurück
 
