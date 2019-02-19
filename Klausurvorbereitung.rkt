@@ -127,6 +127,16 @@
 ;(member '(a b c d e f) 'c) (member '(a b d e f) 'c)
 
 ;; last - Überprüft, ob ein Element das letzte Element einer Liste ist
+(define (last liste ele)
+
+  (cond
+    ((null? liste) #f)
+    ((and (eq? ele (car liste)) (null? (cdr liste))) #t)
+    (else (last (cdr liste) ele))
+    )
+  
+  )
+;(last '(a b c) 'c) (last '(a b c d e f) 'c)
 
 ;; right reduce Funktion für Listenkonkatenation
 
