@@ -107,6 +107,16 @@
 ;(n-mal 3 (lambda () (begin (display 1) (newline))))
 
 ;; filter - eine Funktion, die eine Liste und ein Prädikat als Eingabe erwartet und eine Liste der Elemente aus der Eingabeliste zurückgibt, die das Prädikat erfüllen
+(define (filter liste check)
+
+  (cond
+    ((null? liste) '())
+    ((check (car liste)) (cons (car liste) (filter (cdr liste) check)))
+    (else (filter (cdr liste) check))
+    )
+  
+  )
+;(filter '(1 2 3 4 5 6 7 8 9) (lambda (x) (= 0 (modulo x 2))))
 
 ;; insert - Fügt ein Element sortiert in eine Liste ein
 (define (insert liste ele)
