@@ -48,3 +48,7 @@ ue_length([_|R], N) :- ue_length(R, N1), N is N1 + 1.
 % alternative Darstellung für \+ (NOT)
 not(X) :- call(X), !, fail.
 not(X) :- true.
+
+% element aus Liste streichen
+streiche(E,[E|R],R).
+streiche(E,[F|R],[F|RohneE]) :- streiche(E,R,RohneE).
