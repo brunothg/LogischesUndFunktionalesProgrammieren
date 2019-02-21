@@ -38,7 +38,7 @@ ue_ith(E, 1, [E|_]).
 ue_ith(E, N, [_|R]) :- ue_ith(E, N1, R), N is N1 + 1.
 
 % if-then-else mit Cut-Operator
-ite(I, T, E) :- call(I), T, !, true.
+ite(I, T, E) :- call(I), !, T.
 ite(I, T, E) :- call(E).
 
 % length/2 Länge einer Liste
